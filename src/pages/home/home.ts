@@ -29,7 +29,7 @@ export class HomePage {
   } 
 
   gotoSlidesPage(){
-    this.navCtrl.setRoot(SlidesPage);
+    this.navCtrl.push(SlidesPage);
   
     } 
 }
