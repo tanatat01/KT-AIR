@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CustomersProvider } from '../../providers/customers/customers';
-import { CustomerdetailPage } from '../customerdetail/customerdetail';
 
 /**
- * Generated class for the AboutPage page.
+ * Generated class for the CustomerdetailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +11,17 @@ import { CustomerdetailPage } from '../customerdetail/customerdetail';
 
 @IonicPage()
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html',
+  selector: 'page-customerdetail',
+  templateUrl: 'customerdetail.html',
 })
-export class AboutPage {
-  allCusts : any = 0;
-
+export class CustomerdetailPage {
+    cust: any=0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:CustomersProvider) {
-    this.data.loadAll().then(result=>{this.allCusts = result });
+    this.data.getCustomerById(this.navParams.get('id')).then(result=>{this.cust = result});
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutPage');
+    console.log('ionViewDidLoad CustomerdetailPage');
   }
-  showCustomer(custid){
-    this.navCtrl.push(CustomerdetailPage,{id:custid})
-  }
+
 }
